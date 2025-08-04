@@ -164,16 +164,14 @@ function initializeShareModal() {
         shareBtn.addEventListener('click', (e) => {
             e.preventDefault();
             console.log('Abriendo modal de compartir');
-            shareModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            openModal(shareModal);
         });
     }
 
     if (closeShareModal && shareModal) {
         closeShareModal.addEventListener('click', () => {
             console.log('Cerrando modal de compartir');
-            shareModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            closeModal(shareModal);
         });
     }
 
@@ -181,8 +179,7 @@ function initializeShareModal() {
         shareModal.addEventListener('click', (e) => {
             if (e.target === shareModal) {
                 console.log('Cerrando modal de compartir (click fuera)');
-                shareModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(shareModal);
             }
         });
     }
@@ -200,34 +197,70 @@ function initializeSaveModal() {
     if (saveBtn && saveModal) {
         saveBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            saveModal.style.display = 'block';
-            document.body.style.overflow = 'hidden';
+            openModal(saveModal);
         });
     }
 
     if (closeSaveModal && saveModal) {
         closeSaveModal.addEventListener('click', () => {
-            saveModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            closeModal(saveModal);
         });
     }
 
     if (saveModal) {
         saveModal.addEventListener('click', (e) => {
             if (e.target === saveModal) {
-                saveModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                closeModal(saveModal);
             }
         });
     }
 
+    // Wishlist item selection
+    const wishlistItems = document.querySelectorAll('.wishlist-item');
+    wishlistItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            if (checkbox) {
+                checkbox.checked = !checkbox.checked;
+                item.classList.toggle('selected', checkbox.checked);
+            }
+        });
+    });
+
     // Create new list functionality
     const createNewListBtn = document.querySelector('.create-new-list');
     const newListInput = document.querySelector('.new-list-input');
+    const cancelListBtn = document.querySelector('.cancel-list-btn');
 
     if (createNewListBtn && newListInput) {
         createNewListBtn.addEventListener('click', () => {
-            newListInput.style.display = newListInput.style.display === 'none' ? 'block' : 'none';
+            newListInput.style.display = 'block';
+            createNewListBtn.style.display = 'none';
+            newListInput.querySelector('input').focus();
+        });
+    }
+
+    if (cancelListBtn && newListInput && createNewListBtn) {
+        cancelListBtn.addEventListener('click', () => {
+            newListInput.style.display = 'none';
+            createNewListBtn.style.display = 'flex';
+            newListInput.querySelector('input').value = '';
+        });
+    }
+
+    // Create list button
+    const createListBtn = document.querySelector('.create-list-btn');
+    if (createListBtn && newListInput && createNewListBtn) {
+        createListBtn.addEventListener('click', () => {
+            const listName = newListInput.querySelector('input').value.trim();
+            if (listName) {
+                showNotification(`¡Lista "${listName}" creada exitosamente!`, 'success');
+                newListInput.style.display = 'none';
+                createNewListBtn.style.display = 'flex';
+                newListInput.querySelector('input').value = '';
+            } else {
+                showNotification('Por favor ingresa un nombre para la lista', 'warning');
+            }
         });
     }
 
@@ -239,8 +272,15 @@ function initializeSaveModal() {
             if (checkedLists.length > 0) {
                 const lists = Array.from(checkedLists).map(input => input.value).join(', ');
                 showNotification(`¡Guardado en: ${lists}!`, 'success');
-                saveModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+                
+                // Update heart icon to filled
+                const heartIcon = document.querySelector('.save-btn i');
+                if (heartIcon) {
+                    heartIcon.className = 'fas fa-heart';
+                    heartIcon.style.color = '#FF385C';
+                }
+                
+                closeModal(saveModal);
             } else {
                 showNotification('Selecciona al menos una lista', 'warning');
             }
@@ -272,17 +312,37 @@ function initializePhotoTourModal() {
 
     if (closePhotoTourBtn && photoTourModal) {
         closePhotoTourBtn.addEventListener('click', () => {
-            photoTourModal.style.display = 'none';
-            document.body.style.overflow = 'auto';
+            closePhotoTourModal();
         });
     }
 
-    if (photoTourModal) {
-        photoTourModal.addEventListener('click', (e) => {
-            if (e.target === photoTourModal) {
-                photoTourModal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
+    // Photo tour action buttons
+    const sharePhotoBtn = document.querySelector('.share-photo-btn');
+    const savePhotoBtn = document.querySelector('.save-photo-btn');
+
+    if (sharePhotoBtn) {
+        sharePhotoBtn.addEventListener('click', () => {
+            // Close photo tour and open share modal
+            closePhotoTourModal();
+            setTimeout(() => {
+                const shareModal = document.getElementById('shareModal');
+                if (shareModal) {
+                    openModal(shareModal);
+                }
+            }, 300);
+        });
+    }
+
+    if (savePhotoBtn) {
+        savePhotoBtn.addEventListener('click', () => {
+            // Close photo tour and open save modal
+            closePhotoTourModal();
+            setTimeout(() => {
+                const saveModal = document.getElementById('saveModal');
+                if (saveModal) {
+                    openModal(saveModal);
+                }
+            }, 300);
         });
     }
 }
@@ -319,47 +379,75 @@ function initializeLoginModal() {
 
 // Photo Tour Functionality
 function openPhotoTour() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const spaceId = parseInt(urlParams.get('spaceId')) || 1;
-    const space = spacesData.find(s => s.id === spaceId) || spacesData[0];
-
-    if (!space || !space.images) return;
-
     const photoTourModal = document.getElementById('photo-tour-modal');
-    const photoTourContent = document.querySelector('.photo-tour-content');
+    
+    if (!photoTourModal) return;
 
-    if (!photoTourModal || !photoTourContent) return;
+    // Prevent body scroll
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
 
-    // Clear existing content
-    photoTourContent.innerHTML = '';
-
-    // Create photo grid
-    const photoGrid = document.createElement('div');
-    photoGrid.className = 'photo-tour-grid';
-
-    space.images.forEach((imgSrc, index) => {
-        const photoItem = document.createElement('div');
-        photoItem.className = 'photo-tour-item';
-        photoItem.innerHTML = `
-            <img src="${imgSrc}" alt="Imagen ${index + 1}" loading="lazy">
-            <div class="photo-overlay">
-                <span>${index + 1} / ${space.images.length}</span>
-            </div>
-        `;
-        photoGrid.appendChild(photoItem);
-    });
-
-    photoTourContent.appendChild(photoGrid);
-
-    // Show modal
+    // Show modal with animation
     photoTourModal.style.display = 'block';
-    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+        photoTourModal.classList.add('active');
+    }, 10);
+}
+
+function closePhotoTourModal() {
+    const photoTourModal = document.getElementById('photo-tour-modal');
+    
+    if (!photoTourModal) return;
+
+    photoTourModal.classList.remove('active');
+    setTimeout(() => {
+        photoTourModal.style.display = 'none';
+        // Restore body scroll
+        const scrollY = document.body.style.top;
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }, 400);
+}
+
+// Helper function to close modals
+function closeModal(modal) {
+    if (!modal) return;
+    
+    modal.classList.remove('active');
+    setTimeout(() => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.width = '';
+    }, 300);
+}
+
+// Helper function to open modals
+function openModal(modal) {
+    if (!modal) return;
+    
+    // Prevent body scroll
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+    
+    modal.style.display = 'flex';
+    setTimeout(() => {
+        modal.classList.add('active');
+    }, 10);
 }
 
 // Social Sharing Functions
 function setupSocialSharing() {
     const currentUrl = encodeURIComponent(window.location.href);
-    const currentTitle = encodeURIComponent(document.title);
+    const currentTitle = encodeURIComponent('Increíble Loft con Vista al Mar - BE INN');
+    const currentDescription = encodeURIComponent('Disfruta de una experiencia de lujo en este alojamiento céntrico con vista al mar.');
 
     // Setup all share options
     const shareOptions = document.querySelectorAll('.share-option');
@@ -372,24 +460,45 @@ function setupSocialSharing() {
             switch (shareType) {
                 case 'facebook':
                     window.open(`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`, '_blank', 'width=600,height=400');
+                    showNotification('¡Compartido en Facebook!', 'success');
                     break;
                 case 'twitter':
                     window.open(`https://twitter.com/intent/tweet?url=${currentUrl}&text=${currentTitle}`, '_blank', 'width=600,height=400');
+                    showNotification('¡Compartido en Twitter!', 'success');
                     break;
                 case 'whatsapp':
-                    window.open(`https://wa.me/?text=${currentTitle}%20${currentUrl}`, '_blank');
+                    const whatsappText = `${decodeURIComponent(currentTitle)} - ${decodeURIComponent(currentUrl)}`;
+                    window.open(`https://wa.me/?text=${encodeURIComponent(whatsappText)}`, '_blank');
+                    showNotification('¡Compartido en WhatsApp!', 'success');
+                    break;
+                case 'messenger':
+                    window.open(`https://www.facebook.com/dialog/send?link=${currentUrl}&app_id=YOUR_APP_ID`, '_blank', 'width=600,height=400');
+                    showNotification('¡Compartido en Messenger!', 'success');
                     break;
                 case 'email':
-                    window.location.href = `mailto:?subject=${currentTitle}&body=Mira este increíble espacio: ${decodeURIComponent(currentUrl)}`;
+                    const emailSubject = decodeURIComponent(currentTitle);
+                    const emailBody = `Mira este increíble espacio:\n\n${decodeURIComponent(currentDescription)}\n\n${decodeURIComponent(currentUrl)}`;
+                    window.location.href = `mailto:?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                    showNotification('¡Abriendo cliente de correo!', 'info');
                     break;
                 case 'copy-link':
                     navigator.clipboard.writeText(window.location.href).then(() => {
                         showNotification('¡Enlace copiado al portapapeles!', 'success');
-                        // Close modal after copying
-                        document.getElementById('shareModal').style.display = 'none';
-                        document.body.style.overflow = 'auto';
+                        closeModal(document.getElementById('shareModal'));
                     }).catch(() => {
-                        showNotification('Error al copiar enlace', 'error');
+                        // Fallback for older browsers
+                        const textArea = document.createElement('textarea');
+                        textArea.value = window.location.href;
+                        document.body.appendChild(textArea);
+                        textArea.select();
+                        try {
+                            document.execCommand('copy');
+                            showNotification('¡Enlace copiado al portapapeles!', 'success');
+                            closeModal(document.getElementById('shareModal'));
+                        } catch (err) {
+                            showNotification('Error al copiar enlace', 'error');
+                        }
+                        document.body.removeChild(textArea);
                     });
                     break;
             }
@@ -455,61 +564,111 @@ function setupBookingFunctionality() {
     }
 }
 
-// Notification System
-function showNotification(message, type = 'info') {
+// Enhanced notification system - Mobile First
+function showNotification(message, type = 'info', duration = 4000) {
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
-    existingNotifications.forEach(notification => notification.remove());
+    existingNotifications.forEach(notification => {
+        notification.remove();
+    });
 
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
+    
+    // Icon based on type
+    let icon = '';
+    switch (type) {
+        case 'success':
+            icon = '<i class="fas fa-check-circle"></i>';
+            break;
+        case 'error':
+            icon = '<i class="fas fa-exclamation-circle"></i>';
+            break;
+        case 'warning':
+            icon = '<i class="fas fa-exclamation-triangle"></i>';
+            break;
+        case 'info':
+        default:
+            icon = '<i class="fas fa-info-circle"></i>';
+            break;
+    }
+    
+    notification.innerHTML = `
+        ${icon}
+        <span>${message}</span>
+    `;
+    
+    // Mobile-first styles
+    const isMobile = window.innerWidth < 768;
+    const backgroundColor = type === 'success' ? '#4CAF50' : 
+                          type === 'warning' ? '#FF9800' : 
+                          type === 'error' ? '#f44336' : '#2196F3';
+    
     notification.style.cssText = `
         position: fixed;
-        top: 100px;
-        right: 20px;
-        background: ${type === 'success' ? '#4CAF50' : type === 'warning' ? '#FF9800' : type === 'error' ? '#f44336' : '#2196F3'};
+        ${isMobile ? 'bottom: 20px; left: 16px; right: 16px;' : 'top: 100px; right: 20px; max-width: 350px;'}
+        background: ${backgroundColor};
         color: white;
-        padding: 16px 24px;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
-        max-width: 300px;
+        padding: 16px 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        z-index: 10001;
+        transform: ${isMobile ? 'translateY(100%)' : 'translateX(100%)'};
+        transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
         font-size: 14px;
         font-weight: 500;
-        white-space: pre-line;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        backdrop-filter: blur(10px);
     `;
 
-    notification.textContent = message;
     document.body.appendChild(notification);
 
     // Animate in
     setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
+        notification.style.transform = isMobile ? 'translateY(0)' : 'translateX(0)';
     }, 100);
 
     // Auto remove
     setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
+        notification.style.transform = isMobile ? 'translateY(100%)' : 'translateX(100%)';
         setTimeout(() => {
             if (notification.parentNode) {
                 notification.parentNode.removeChild(notification);
             }
         }, 300);
-    }, 4000);
+    }, duration);
 }
 
 // Keyboard Navigation
 document.addEventListener('keydown', (e) => {
     // ESC key closes all modals
     if (e.key === 'Escape') {
-        const modals = document.querySelectorAll('.modal, .photo-tour-modal');
-        modals.forEach(modal => {
-            if (modal.style.display === 'block') {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
+        const activeModals = document.querySelectorAll('.modal.active, .photo-tour-modal.active');
+        activeModals.forEach(modal => {
+            if (modal.classList.contains('photo-tour-modal')) {
+                closePhotoTourModal();
+            } else {
+                closeModal(modal);
             }
         });
     }
 });
+
+// Prevent body scroll when modals are open
+function preventBodyScroll() {
+    const scrollY = window.scrollY;
+    document.body.style.position = 'fixed';
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = '100%';
+}
+
+function restoreBodyScroll() {
+    const scrollY = document.body.style.top;
+    document.body.style.position = '';
+    document.body.style.top = '';
+    document.body.style.width = '';
+    window.scrollTo(0, parseInt(scrollY || '0') * -1);
+}
+

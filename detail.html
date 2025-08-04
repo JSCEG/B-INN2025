@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalle del Espacio - BE INN</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="booking-card-fix.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
@@ -72,58 +73,137 @@
 
         <!-- Share Modal -->
         <div id="shareModal" class="modal">
-            <div class="modal-content">
+            <div class="modal-content share-modal-content">
                 <div class="modal-header">
                     <h2>Compartir este espacio</h2>
-                    <span class="close-share-modal">&times;</span>
+                    <button class="close-share-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
                 <div class="share-options">
-                    <a href="#" class="share-option" data-share-type="facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        <span>Facebook</span>
-                    </a>
-                    <a href="#" class="share-option" data-share-type="twitter">
-                        <i class="fab fa-twitter"></i>
-                        <span>Twitter</span>
-                    </a>
-                    <a href="#" class="share-option" data-share-type="email">
-                        <i class="fas fa-envelope"></i>
-                        <span>Correo electrónico</span>
-                    </a>
-                    <a href="#" class="share-option" data-share-type="copy-link">
-                        <i class="fas fa-link"></i>
-                        <span>Copiar enlace</span>
-                    </a>
+                    <div class="share-option" data-share-type="copy-link">
+                        <div class="share-icon">
+                            <i class="fas fa-link"></i>
+                        </div>
+                        <div class="share-text">
+                            <h4>Copiar enlace</h4>
+                            <p>Comparte fácilmente con cualquier persona</p>
+                        </div>
+                    </div>
+                    <div class="share-option" data-share-type="email">
+                        <div class="share-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="share-text">
+                            <h4>Correo electrónico</h4>
+                            <p>Envía por correo electrónico</p>
+                        </div>
+                    </div>
+                    <div class="share-option" data-share-type="whatsapp">
+                        <div class="share-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="share-text">
+                            <h4>WhatsApp</h4>
+                            <p>Comparte en WhatsApp</p>
+                        </div>
+                    </div>
+                    <div class="share-option" data-share-type="facebook">
+                        <div class="share-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="share-text">
+                            <h4>Facebook</h4>
+                            <p>Comparte en Facebook</p>
+                        </div>
+                    </div>
+                    <div class="share-option" data-share-type="twitter">
+                        <div class="share-icon">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="share-text">
+                            <h4>Twitter</h4>
+                            <p>Comparte en Twitter</p>
+                        </div>
+                    </div>
+                    <div class="share-option" data-share-type="messenger">
+                        <div class="share-icon">
+                            <i class="fab fa-facebook-messenger"></i>
+                        </div>
+                        <div class="share-text">
+                            <h4>Messenger</h4>
+                            <p>Comparte en Messenger</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Save Modal -->
         <div id="saveModal" class="modal">
-            <div class="modal-content">
+            <div class="modal-content save-modal-content">
                 <div class="modal-header">
-                    <h2>Guardar en tu lista de deseos</h2>
-                    <span class="close-save-modal">&times;</span>
+                    <h2>Guardar en lista de deseos</h2>
+                    <button class="close-save-modal">
+                        <i class="fas fa-times"></i>
+                    </button>
                 </div>
                 <div class="save-options">
-                    <div class="save-list-item">
-                        <input type="checkbox" id="list-favoritos" name="save-list" value="Mis Favoritos">
-                        <label for="list-favoritos">Mis Favoritos</label>
+                    <div class="wishlist-item" data-list="favoritos">
+                        <div class="wishlist-preview">
+                            <div class="wishlist-images">
+                                <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=60&h=60&fit=crop" alt="">
+                                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=60&h=60&fit=crop" alt="">
+                                <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=60&h=60&fit=crop" alt="">
+                            </div>
+                        </div>
+                        <div class="wishlist-info">
+                            <h4>Mis Favoritos</h4>
+                            <p>3 lugares guardados</p>
+                        </div>
+                        <div class="wishlist-action">
+                            <input type="checkbox" id="list-favoritos" name="save-list" value="Mis Favoritos">
+                        </div>
                     </div>
-                    <div class="save-list-item">
-                        <input type="checkbox" id="list-viajes" name="save-list" value="Viajes Futuros">
-                        <label for="list-viajes">Viajes Futuros</label>
+                    
+                    <div class="wishlist-item" data-list="viajes">
+                        <div class="wishlist-preview">
+                            <div class="wishlist-images">
+                                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=60&h=60&fit=crop" alt="">
+                                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=60&h=60&fit=crop" alt="">
+                            </div>
+                        </div>
+                        <div class="wishlist-info">
+                            <h4>Viajes Futuros</h4>
+                            <p>2 lugares guardados</p>
+                        </div>
+                        <div class="wishlist-action">
+                            <input type="checkbox" id="list-viajes" name="save-list" value="Viajes Futuros">
+                        </div>
                     </div>
-                    <div class="save-list-item create-new-list">
-                        <i class="fas fa-plus-circle"></i>
-                        <span>Crear nueva lista</span>
+                    
+                    <div class="create-new-list">
+                        <div class="create-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <div class="create-text">
+                            <h4>Crear nueva lista</h4>
+                            <p>Organiza tus lugares favoritos</p>
+                        </div>
                     </div>
+                    
                     <div class="new-list-input" style="display: none;">
-                        <input type="text" placeholder="Nombre de la nueva lista">
-                        <button class="btn-primary create-list-btn">Crear</button>
+                        <input type="text" placeholder="Nombre de la nueva lista" maxlength="50">
+                        <div class="input-actions">
+                            <button class="btn-secondary cancel-list-btn">Cancelar</button>
+                            <button class="btn-primary create-list-btn">Crear</button>
+                        </div>
                     </div>
                 </div>
-                <button class="btn-primary save-to-list-btn">Guardar</button>
+                
+                <div class="modal-footer">
+                    <button class="btn-primary save-to-list-btn">Guardar</button>
+                </div>
             </div>
         </div>
 
@@ -689,10 +769,68 @@
     <!-- Photo Tour Modal Structure -->
     <div id="photo-tour-modal" class="photo-tour-modal">
         <div class="photo-tour-header">
-            <button class="close-photo-tour-btn">&times; Cerrar</button>
+            <div class="photo-tour-nav">
+                <button class="close-photo-tour-btn">
+                    <i class="fas fa-times"></i>
+                    <span>Cerrar</span>
+                </button>
+                <div class="photo-tour-actions">
+                    <button class="photo-action-btn share-photo-btn">
+                        <i class="fas fa-share"></i>
+                        <span>Compartir</span>
+                    </button>
+                    <button class="photo-action-btn save-photo-btn">
+                        <i class="far fa-heart"></i>
+                        <span>Guardar</span>
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="photo-tour-content">
-            <!-- Photos will be dynamically rendered here by JavaScript -->
+            <div class="photo-tour-grid">
+                <!-- Photos will be dynamically rendered here by JavaScript -->
+                <div class="photo-category-section">
+                    <h3>Increíble Loft con Vista al Mar</h3>
+                    <div class="photo-grid">
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop" alt="Vista principal del espacio" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop" alt="Sala de estar" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop" alt="Cocina moderna" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop" alt="Dormitorio principal" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop" alt="Baño de lujo" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop" alt="Terraza con vista" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&h=600&fit=crop" alt="Área de trabajo" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1571624436279-b272aff752b5?w=800&h=600&fit=crop" alt="Comedor elegante" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=600&fit=crop" alt="Vista nocturna" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&h=600&fit=crop" alt="Piscina" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop" alt="Gimnasio" loading="lazy">
+                        </div>
+                        <div class="photo-item">
+                            <img src="https://images.unsplash.com/photo-1555636222-cae831e670b3?w=800&h=600&fit=crop" alt="Entrada principal" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
