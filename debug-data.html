@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de carga de datos - BE INN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3399FF, #0077CC);
+            color: white;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .test-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        .status {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .success {
+            color: #4CAF50;
+        }
+
+        .error {
+            color: #f44336;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test de carga de datos BE INN</h1>
+
+    <div class="test-box">
+        <h2>Estado de carga:</h2>
+        <div id="status">Cargando...</div>
+    </div>
+
+    <div class="test-box">
+        <h2>Datos encontrados:</h2>
+        <div id="data-info">Verificando...</div>
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const statusDiv = document.getElementById('status');
+            const dataInfoDiv = document.getElementById('data-info');
+
+            try {
+                if (typeof spacesData !== 'undefined') {
+                    statusDiv.innerHTML = '<span class="status success">✅ spacesData cargado correctamente</span>';
+                    dataInfoDiv.innerHTML = `
+                        <div class="status success">
+                            📊 Encontrados ${spacesData.length} espacios<br>
+                            🏢 Categorías: ${[...new Set(spacesData.map(s => s.category))].join(', ')}<br>
+                            🔧 Primer espacio: ${spacesData[0]?.title || 'N/A'}
+                        </div>
+                    `;
+                } else {
+                    statusDiv.innerHTML = '<span class="status error">❌ spacesData no está definido</span>';
+                    dataInfoDiv.innerHTML = '<span class="status error">No se pudieron cargar los datos</span>';
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<span class="status error">❌ Error: ${error.message}</span>`;
+                dataInfoDiv.innerHTML = '<span class="status error">Error al procesar los datos</span>';
+            }
+        });
+    </script>
+</body>
+
+</html>

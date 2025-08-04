@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Espacio - BE INN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Header (Reused from main page for consistency) -->
+    <header class="header">
+        <div class="header-container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <img src="https://cdn.sassoapps.com/logos/logo_biiin.png" alt="BE INN" class="logo">
+                </div>
+                <div class="header-center">
+                    <div class="small-search-bar">
+                        <button>Cualquier lugar</button>
+                        <span class="divider"></span>
+                        <button>Cualquier semana</button>
+                        <span class="divider"></span>
+                        <button class="light-text">¿Cuántos?</button>
+                        <div class="search-icon-container">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="become-host-btn">Conviértete en Inner</button>
+                    <button class="user-menu-btn" id="loginBtn">
+                        <i class="fas fa-bars"></i>
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="detail-main-content">
+        <!-- Detail Header -->
+        <section class="detail-header">
+            <h1>Increíble Loft con Vista al Mar</h1>
+            <div class="detail-subtitle">
+                <span class="rating"><i class="fas fa-star"></i> 4.98</span>
+                <span class="reviews">(124 reseñas)</span>
+                <span class="location">Acapulco de Juárez, Guerrero, México</span>
+                <div class="detail-actions">
+                    <button class="action-btn share-btn">
+                        <i class="fas fa-share-alt"></i>
+                        <span>Compartir</span>
+                    </button>
+                    <button class="action-btn save-btn">
+                        <i class="far fa-heart"></i>
+                        <span>Guardar</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Share Modal -->
+        <div id="shareModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Compartir este espacio</h2>
+                    <span class="close-share-modal">&times;</span>
+                </div>
+                <div class="share-options">
+                    <a href="#" class="share-option" data-share-type="facebook">
+                        <i class="fab fa-facebook-f"></i>
+                        <span>Facebook</span>
+                    </a>
+                    <a href="#" class="share-option" data-share-type="twitter">
+                        <i class="fab fa-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="share-option" data-share-type="email">
+                        <i class="fas fa-envelope"></i>
+                        <span>Correo electrónico</span>
+                    </a>
+                    <a href="#" class="share-option" data-share-type="copy-link">
+                        <i class="fas fa-link"></i>
+                        <span>Copiar enlace</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Save Modal -->
+        <div id="saveModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Guardar en tu lista de deseos</h2>
+                    <span class="close-save-modal">&times;</span>
+                </div>
+                <div class="save-options">
+                    <div class="save-list-item">
+                        <input type="checkbox" id="list-favoritos" name="save-list" value="Mis Favoritos">
+                        <label for="list-favoritos">Mis Favoritos</label>
+                    </div>
+                    <div class="save-list-item">
+                        <input type="checkbox" id="list-viajes" name="save-list" value="Viajes Futuros">
+                        <label for="list-viajes">Viajes Futuros</label>
+                    </div>
+                    <div class="save-list-item create-new-list">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Crear nueva lista</span>
+                    </div>
+                    <div class="new-list-input" style="display: none;">
+                        <input type="text" placeholder="Nombre de la nueva lista">
+                        <button class="btn-primary create-list-btn">Crear</button>
+                    </div>
+                </div>
+                <button class="btn-primary save-to-list-btn">Guardar</button>
+            </div>
+        </div>
+
+        <!-- Save Modal -->
+        <div id="saveModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Guardar en tu lista de deseos</h2>
+                    <span class="close-save-modal">&times;</span>
+                </div>
+                <div class="save-options">
+                    <div class="save-list-item">
+                        <input type="checkbox" id="list-favoritos" name="save-list" value="Mis Favoritos">
+                        <label for="list-favoritos">Mis Favoritos</label>
+                    </div>
+                    <div class="save-list-item">
+                        <input type="checkbox" id="list-viajes" name="save-list" value="Viajes Futuros">
+                        <label for="list-viajes">Viajes Futuros</label>
+                    </div>
+                    <div class="save-list-item create-new-list">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Crear nueva lista</span>
+                    </div>
+                    <div class="new-list-input" style="display: none;">
+                        <input type="text" placeholder="Nombre de la nueva lista">
+                        <button class="btn-primary create-list-btn">Crear</button>
+                    </div>
+                </div>
+                <button class="btn-primary save-to-list-btn">Guardar</button>
+            </div>
+        </div>
+
+        <!-- Photo Gallery -->
+        <section class="photo-gallery">
+            <div class="gallery-grid">
+                <div class="main-image">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop"
+                        alt="Vista principal del espacio">
+                </div>
+                <div class="secondary-images">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
+                        alt="Imagen secundaria 1">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop"
+                        alt="Imagen secundaria 2">
+                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop"
+                        alt="Imagen secundaria 3">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop"
+                        alt="Imagen secundaria 4">
+                </div>
+            </div>
+            <div class="view-all-photos-overlay">
+                <i class="fas fa-camera"></i>
+                <span>Ver todas las fotos</span>
+            </div>
+        </section>
+
+        <!-- Two-column layout for info and booking -->
+        <div class="detail-body-container">
+            <!-- Left Column: Space Info -->
+            <div class="detail-info-column">
+                <div class="space-host-info">
+                    <h2>Oficina completa. Anfitrión: Juan Pérez</h2>
+                    <p>4 personas · 1 oficina privada · 2 escritorios · 1 baño</p>
+                </div>
+                <hr>
+                <div class="space-highlights">
+                    <div class="highlight-item">
+                        <i class="fas fa-door-open"></i>
+                        <div>
+                            <h3>Llegada autónoma</h3>
+                            <p>Accede al alojamiento directamente con el teclado numérico.</p>
+                        </div>
+                    </div>
+                    <div class="highlight-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Ubicación fantástica</h3>
+                            <p>El 100% de los últimos huéspedes han valorado con 5 estrellas la ubicación.</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="space-description">
+                    <h3>Descripción</h3>
+                    <p>Disfruta de una experiencia de lujo en este alojamiento céntrico. Este loft ha sido diseñado
+                        pensando en la productividad y el confort, con una vista inspiradora al mar que te ayudará a
+                        concentrarte y relajarte...</p>
+                </div>
+                <hr>
+                <div class="space-amenities">
+                    <h3>¿Qué ofrece este lugar?</h3>
+                    <ul>
+                        <li><i class="fas fa-wifi"></i> Wifi de alta velocidad</li>
+                        <li><i class="fas fa-tv"></i> Pantalla 4K con Apple TV</li>
+                        <li><i class="fas fa-coffee"></i> Cafetera premium</li>
+                        <li><i class="fas fa-car"></i> Estacionamiento gratuito</li>
+                        <li><i class="fas fa-air-conditioner"></i> Aire acondicionado</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Right Column: Booking Card -->
+            <div class="booking-card-column">
+                <div class="booking-card">
+                    <div class="booking-price">
+                        <b>$2,910 MXN</b> <span>noche</span>
+                    </div>
+                    <div class="booking-form">
+                        <div class="date-inputs">
+                            <div class="date-field">
+                                <label for="checkin">LLEGADA</label>
+                                <input type="text" id="checkin" value="12/09/2025">
+                            </div>
+                            <div class="date-field">
+                                <label for="checkout">SALIDA</label>
+                                <input type="text" id="checkout" value="14/09/2025">
+                            </div>
+                        </div>
+                        <div class="guest-input">
+                            <label for="guests">PERSONAS</label>
+                            <input type="text" id="guests" value="2 personas">
+                        </div>
+                        <button class="btn-primary">Reservar</button>
+                    </div>
+                    <p class="booking-charge-notice">No se te cobrará nada por ahora</p>
+                    <div class="price-breakdown">
+                        <div class="price-item">
+                            <span>$2,910 x 2 noches</span>
+                            <span>$5,820</span>
+                        </div>
+                        <div class="price-item">
+                            <span>Tarifa de servicio de BE INN</span>
+                            <span>$815</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="price-total">
+                        <b>Total antes de impuestos</b>
+                        <b>$6,635</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="section-divider">
+
+        <!-- Reviews Section -->
+        <section class="reviews-section">
+            <h2><i class="fas fa-star"></i> 4.98 (124 reseñas)</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <h3>Limpieza</h3>
+                    <div class="rating-bar">
+                        <div class="bar" style="width: 98%;"></div>
+                    </div>
+                    <span>4.9</span>
+                </div>
+                <div class="review-card">
+                    <h3>Comunicación</h3>
+                    <div class="rating-bar">
+                        <div class="bar" style="width: 100%;"></div>
+                    </div>
+                    <span>5.0</span>
+                </div>
+                <!-- Add more rating categories -->
+            </div>
+            <div class="user-reviews">
+                <div class="user-review-card">
+                    <div class="user-info">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de usuario">
+                        <div>
+                            <h4>Maria</h4>
+                            <span>Agosto de 2025</span>
+                        </div>
+                    </div>
+                    <p>¡El lugar es increíble! Tal como se muestra en las fotos. La comunicación con Juan fue excelente.
+                        Definitivamente volvería.</p>
+                </div>
+                <!-- Add more user reviews -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer (Reused) -->
+    <footer class="footer">
+        <div class="footer-container">
+            <!-- ... footer content from index.html ... -->
+        </div>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="detail-script.js"></script>
+
+    <!-- Photo Tour Modal Structure -->
+    <div id="photo-tour-modal" class="photo-tour-modal">
+        <div class="photo-tour-header">
+            <button class="close-photo-tour-btn">&times; Cerrar</button>
+        </div>
+        <div class="photo-tour-content">
+            <!-- Photos will be dynamically rendered here by JavaScript -->
+        </div>
+    </div>
+</body>
+
+</html>

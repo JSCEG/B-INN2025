@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba de Modales - BE INN</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .test-container {
+            padding: 100px 20px;
+            text-align: center;
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            color: white;
+        }
+
+        .test-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .test-btn {
+            background: var(--glass-bg-strong);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 15px 25px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .test-btn:hover {
+            background: var(--gradient-hover);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <h1>Prueba de Modales BE INN</h1>
+        <p>Haz clic en los botones para probar los modales:</p>
+
+        <div class="test-buttons">
+            <button class="test-btn share-btn">
+                <i class="fas fa-share-alt"></i> Compartir
+            </button>
+            <button class="test-btn save-btn">
+                <i class="far fa-heart"></i> Guardar
+            </button>
+            <button class="test-btn view-all-photos-overlay">
+                <i class="fas fa-camera"></i> Ver fotos
+            </button>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Compartir este espacio</h2>
+                <span class="close-share-modal">&times;</span>
+            </div>
+            <div class="share-options">
+                <a href="#" class="share-option" data-share-type="facebook">
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="#" class="share-option" data-share-type="twitter">
+                    <i class="fab fa-twitter"></i>
+                    <span>Twitter</span>
+                </a>
+                <a href="#" class="share-option" data-share-type="email">
+                    <i class="fas fa-envelope"></i>
+                    <span>Email</span>
+                </a>
+                <a href="#" class="share-option" data-share-type="copy-link">
+                    <i class="fas fa-link"></i>
+                    <span>Copiar enlace</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Save Modal -->
+    <div id="saveModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Guardar en tu lista de deseos</h2>
+                <span class="close-save-modal">&times;</span>
+            </div>
+            <div class="save-options">
+                <div class="save-list-item">
+                    <input type="checkbox" id="list-favoritos" name="save-list" value="Mis Favoritos">
+                    <label for="list-favoritos">Mis Favoritos</label>
+                </div>
+                <div class="save-list-item">
+                    <input type="checkbox" id="list-viajes" name="save-list" value="Viajes Futuros">
+                    <label for="list-viajes">Viajes Futuros</label>
+                </div>
+                <div class="save-list-item create-new-list">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Crear nueva lista</span>
+                </div>
+                <div class="new-list-input" style="display: none;">
+                    <input type="text" placeholder="Nombre de la nueva lista">
+                    <button class="create-list-btn">Crear</button>
+                </div>
+            </div>
+            <button class="save-to-list-btn">Guardar</button>
+        </div>
+    </div>
+
+    <!-- Photo Tour Modal -->
+    <div id="photo-tour-modal" class="photo-tour-modal">
+        <div class="photo-tour-header">
+            <button class="close-photo-tour-btn">&times; Cerrar</button>
+        </div>
+        <div class="photo-tour-content">
+            <div class="photo-tour-grid">
+                <div class="photo-tour-item">
+                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop"
+                        alt="Imagen 1">
+                    <div class="photo-overlay">
+                        <span>1 / 5</span>
+                    </div>
+                </div>
+                <div class="photo-tour-item">
+                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop"
+                        alt="Imagen 2">
+                    <div class="photo-overlay">
+                        <span>2 / 5</span>
+                    </div>
+                </div>
+                <div class="photo-tour-item">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=600&fit=crop"
+                        alt="Imagen 3">
+                    <div class="photo-overlay">
+                        <span>3 / 5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="detail-script.js"></script>
+</body>
+
+</html>
