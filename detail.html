@@ -43,14 +43,23 @@
     <main class="detail-main-content">
         <!-- Detail Header -->
         <section class="detail-header">
-            <h1>Increíble Loft con Vista al Mar</h1>
+            <h1 class="property-title">Increíble Loft con Vista al Mar</h1>
             <div class="detail-subtitle">
-                <span class="rating"><i class="fas fa-star"></i> 4.98</span>
-                <span class="reviews">(124 reseñas)</span>
-                <span class="location">Acapulco de Juárez, Guerrero, México</span>
+                <div class="property-meta">
+                    <span class="rating">
+                        <i class="fas fa-star"></i> 4.98
+                    </span>
+                    <span class="reviews-link">(124 reseñas)</span>
+                    <span class="superhost-badge">
+                        <i class="fas fa-medal"></i> Superanfitrión
+                    </span>
+                    <span class="location-link">
+                        <i class="fas fa-map-marker-alt"></i> Acapulco de Juárez, Guerrero, México
+                    </span>
+                </div>
                 <div class="detail-actions">
                     <button class="action-btn share-btn">
-                        <i class="fas fa-share-alt"></i>
+                        <i class="fas fa-share"></i>
                         <span>Compartir</span>
                     </button>
                     <button class="action-btn save-btn">
@@ -118,35 +127,6 @@
             </div>
         </div>
 
-        <!-- Save Modal -->
-        <div id="saveModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Guardar en tu lista de deseos</h2>
-                    <span class="close-save-modal">&times;</span>
-                </div>
-                <div class="save-options">
-                    <div class="save-list-item">
-                        <input type="checkbox" id="list-favoritos" name="save-list" value="Mis Favoritos">
-                        <label for="list-favoritos">Mis Favoritos</label>
-                    </div>
-                    <div class="save-list-item">
-                        <input type="checkbox" id="list-viajes" name="save-list" value="Viajes Futuros">
-                        <label for="list-viajes">Viajes Futuros</label>
-                    </div>
-                    <div class="save-list-item create-new-list">
-                        <i class="fas fa-plus-circle"></i>
-                        <span>Crear nueva lista</span>
-                    </div>
-                    <div class="new-list-input" style="display: none;">
-                        <input type="text" placeholder="Nombre de la nueva lista">
-                        <button class="btn-primary create-list-btn">Crear</button>
-                    </div>
-                </div>
-                <button class="btn-primary save-to-list-btn">Guardar</button>
-            </div>
-        </div>
-
         <!-- Photo Gallery -->
         <section class="photo-gallery">
             <div class="gallery-grid">
@@ -155,19 +135,27 @@
                         alt="Vista principal del espacio">
                 </div>
                 <div class="secondary-images">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 1">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 2">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 3">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 4">
+                    <div class="secondary-image">
+                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
+                            alt="Imagen secundaria 1">
+                    </div>
+                    <div class="secondary-image">
+                        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop"
+                            alt="Imagen secundaria 2">
+                    </div>
+                    <div class="secondary-image">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop"
+                            alt="Imagen secundaria 3">
+                    </div>
+                    <div class="secondary-image">
+                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop"
+                            alt="Imagen secundaria 4">
+                        <div class="view-all-photos-overlay">
+                            <i class="fas fa-th"></i>
+                            <span>Mostrar todas las fotos</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="view-all-photos-overlay">
-                <i class="fas fa-camera"></i>
-                <span>Ver todas las fotos</span>
             </div>
         </section>
 
@@ -175,86 +163,201 @@
         <div class="detail-body-container">
             <!-- Left Column: Space Info -->
             <div class="detail-info-column">
+                <!-- Host Info Section -->
                 <div class="space-host-info">
-                    <h2>Oficina completa. Anfitrión: Juan Pérez</h2>
-                    <p>4 personas · 1 oficina privada · 2 escritorios · 1 baño</p>
+                    <div class="host-header">
+                        <div class="host-details">
+                            <h2>Oficina completa alojada por Juan</h2>
+                            <p class="space-specs">4 huéspedes · 1 oficina privada · 2 escritorios · 1 baño</p>
+                        </div>
+                        <div class="host-avatar">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=56&h=56&fit=crop&crop=face" alt="Juan Pérez">
+                        </div>
+                    </div>
                 </div>
-                <hr>
+                
+                <hr class="section-divider">
+                
+                <!-- Space Highlights -->
                 <div class="space-highlights">
                     <div class="highlight-item">
-                        <i class="fas fa-door-open"></i>
-                        <div>
+                        <div class="highlight-icon">
+                            <i class="fas fa-door-open"></i>
+                        </div>
+                        <div class="highlight-content">
                             <h3>Llegada autónoma</h3>
                             <p>Accede al alojamiento directamente con el teclado numérico.</p>
                         </div>
                     </div>
                     <div class="highlight-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
+                        <div class="highlight-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="highlight-content">
                             <h3>Ubicación fantástica</h3>
                             <p>El 100% de los últimos huéspedes han valorado con 5 estrellas la ubicación.</p>
                         </div>
                     </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                        <div class="highlight-content">
+                            <h3>Cancelación gratuita antes del 18 feb.</h3>
+                            <p>Obtén un reembolso completo si cambias de opinión.</p>
+                        </div>
+                    </div>
                 </div>
-                <hr>
+                
+                <hr class="section-divider">
+                
+                <!-- Aircover Section -->
+                <div class="aircover-section">
+                    <div class="aircover-logo">
+                        <img src="https://a0.muscache.com/im/pictures/54e427bb-9cb7-4a81-94cf-78f19156faad.jpg" alt="aircover" style="height: 26px;">
+                    </div>
+                    <p>Todas las reservas incluyen protección gratuita en caso de que el anfitrión cancele, los datos del anuncio no sean exactos o haya otros problemas, como dificultades durante el check-in.</p>
+                    <a href="#" class="learn-more-link">Más información</a>
+                </div>
+                
+                <hr class="section-divider">
+                
+                <!-- Space Description -->
                 <div class="space-description">
-                    <h3>Descripción</h3>
-                    <p>Disfruta de una experiencia de lujo en este alojamiento céntrico. Este loft ha sido diseñado
-                        pensando en la productividad y el confort, con una vista inspiradora al mar que te ayudará a
-                        concentrarte y relajarte...</p>
+                    <p>Disfruta de una experiencia de lujo en este alojamiento céntrico. Este loft ha sido diseñado pensando en la productividad y el confort, con una vista inspiradora al mar que te ayudará a concentrarte y relajarte.</p>
+                    <br>
+                    <p>El espacio cuenta con todo lo necesario para una estancia perfecta: internet de alta velocidad, escritorios ergonómicos, iluminación natural excepcional y todas las comodidades que necesitas.</p>
+                    <button class="show-more-btn">Mostrar más <i class="fas fa-chevron-right"></i></button>
                 </div>
-                <hr>
+                
+                <hr class="section-divider">
+                
+                <!-- Sleep Arrangements -->
+                <div class="sleep-arrangements">
+                    <h3>Dónde vas a dormir</h3>
+                    <div class="bedroom-card">
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=200&h=150&fit=crop" alt="Dormitorio">
+                        <div class="bedroom-info">
+                            <h4>Dormitorio</h4>
+                            <p>1 cama matrimonial</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <hr class="section-divider">
+                
+                <!-- Amenities -->
                 <div class="space-amenities">
                     <h3>¿Qué ofrece este lugar?</h3>
-                    <ul>
-                        <li><i class="fas fa-wifi"></i> Wifi de alta velocidad</li>
-                        <li><i class="fas fa-tv"></i> Pantalla 4K con Apple TV</li>
-                        <li><i class="fas fa-coffee"></i> Cafetera premium</li>
-                        <li><i class="fas fa-car"></i> Estacionamiento gratuito</li>
-                        <li><i class="fas fa-air-conditioner"></i> Aire acondicionado</li>
-                    </ul>
+                    <div class="amenities-grid">
+                        <div class="amenity-item">
+                            <i class="fas fa-wifi"></i>
+                            <span>Wifi</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-tv"></i>
+                            <span>TV con cable estándar</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-snowflake"></i>
+                            <span>Aire acondicionado</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Cocina</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-car"></i>
+                            <span>Estacionamiento gratuito</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-swimming-pool"></i>
+                            <span>Piscina</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Gimnasio</span>
+                        </div>
+                        <div class="amenity-item">
+                            <i class="fas fa-coffee"></i>
+                            <span>Cafetera</span>
+                        </div>
+                    </div>
+                    <button class="show-all-amenities-btn">Mostrar los 37 servicios</button>
                 </div>
             </div>
 
             <!-- Right Column: Booking Card -->
             <div class="booking-card-column">
                 <div class="booking-card">
-                    <div class="booking-price">
-                        <b>$2,910 MXN</b> <span>noche</span>
+                    <div class="booking-header">
+                        <div class="booking-price">
+                            <span class="price-amount">$2,910 MXN</span>
+                            <span class="price-period">noche</span>
+                        </div>
+                        <div class="booking-rating">
+                            <i class="fas fa-star"></i>
+                            <span class="rating-value">4.98</span>
+                            <span class="rating-reviews">(124 reseñas)</span>
+                        </div>
                     </div>
+                    
                     <div class="booking-form">
-                        <div class="date-inputs">
-                            <div class="date-field">
-                                <label for="checkin">LLEGADA</label>
-                                <input type="text" id="checkin" value="12/09/2025">
+                        <div class="date-guest-container">
+                            <div class="date-inputs">
+                                <div class="date-field checkin-field">
+                                    <label for="checkin">LLEGADA</label>
+                                    <input type="text" id="checkin" value="12/2/2025" readonly>
+                                </div>
+                                <div class="date-field checkout-field">
+                                    <label for="checkout">SALIDA</label>
+                                    <input type="text" id="checkout" value="17/2/2025" readonly>
+                                </div>
                             </div>
-                            <div class="date-field">
-                                <label for="checkout">SALIDA</label>
-                                <input type="text" id="checkout" value="14/09/2025">
+                            <div class="guest-input">
+                                <label for="guests">HUÉSPEDES</label>
+                                <input type="text" id="guests" value="2 huéspedes" readonly>
+                                <i class="fas fa-chevron-down"></i>
                             </div>
                         </div>
-                        <div class="guest-input">
-                            <label for="guests">PERSONAS</label>
-                            <input type="text" id="guests" value="2 personas">
+                        
+                        <button class="btn-primary reserve-btn">Reservar</button>
+                        <p class="booking-charge-notice">No se te cobrará nada por ahora</p>
+                        
+                        <div class="price-breakdown">
+                            <div class="price-item">
+                                <span class="price-label">$2,910 MXN x 5 noches</span>
+                                <span class="price-value">$14,550 MXN</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="price-label">Tarifa de limpieza</span>
+                                <span class="price-value">$500 MXN</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="price-label">Tarifa de servicio de BE INN</span>
+                                <span class="price-value">$2,035 MXN</span>
+                            </div>
+                            <div class="price-item">
+                                <span class="price-label">Impuestos</span>
+                                <span class="price-value">$1,308 MXN</span>
+                            </div>
                         </div>
-                        <button class="btn-primary">Reservar</button>
-                    </div>
-                    <p class="booking-charge-notice">No se te cobrará nada por ahora</p>
-                    <div class="price-breakdown">
-                        <div class="price-item">
-                            <span>$2,910 x 2 noches</span>
-                            <span>$5,820</span>
-                        </div>
-                        <div class="price-item">
-                            <span>Tarifa de servicio de BE INN</span>
-                            <span>$815</span>
+                        
+                        <hr class="price-divider">
+                        
+                        <div class="price-total">
+                            <span class="total-label">Total</span>
+                            <span class="total-amount">$18,393 MXN</span>
                         </div>
                     </div>
-                    <hr>
-                    <div class="price-total">
-                        <b>Total antes de impuestos</b>
-                        <b>$6,635</b>
-                    </div>
+                </div>
+                
+                <!-- Report Listing -->
+                <div class="report-listing">
+                    <button class="report-btn">
+                        <i class="fas fa-flag"></i>
+                        <span>Reportar este anuncio</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -262,46 +365,321 @@
 
         <!-- Reviews Section -->
         <section class="reviews-section">
-            <h2><i class="fas fa-star"></i> 4.98 (124 reseñas)</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <h3>Limpieza</h3>
-                    <div class="rating-bar">
-                        <div class="bar" style="width: 98%;"></div>
-                    </div>
-                    <span>4.9</span>
-                </div>
-                <div class="review-card">
-                    <h3>Comunicación</h3>
-                    <div class="rating-bar">
-                        <div class="bar" style="width: 100%;"></div>
-                    </div>
-                    <span>5.0</span>
-                </div>
-                <!-- Add more rating categories -->
+            <div class="reviews-header">
+                <h2><i class="fas fa-star"></i> 4.98 · 124 reseñas</h2>
             </div>
-            <div class="user-reviews">
-                <div class="user-review-card">
-                    <div class="user-info">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de usuario">
-                        <div>
-                            <h4>Maria</h4>
-                            <span>Agosto de 2025</span>
+            
+            <div class="reviews-summary">
+                <div class="rating-categories">
+                    <div class="rating-category">
+                        <div class="category-info">
+                            <span class="category-name">Limpieza</span>
+                            <span class="category-score">4.9</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar" style="width: 98%;"></div>
                         </div>
                     </div>
-                    <p>¡El lugar es increíble! Tal como se muestra en las fotos. La comunicación con Juan fue excelente.
-                        Definitivamente volvería.</p>
+                    <div class="rating-category">
+                        <div class="category-info">
+                            <span class="category-name">Comunicación</span>
+                            <span class="category-score">5.0</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-category">
+                        <div class="category-info">
+                            <span class="category-name">Llegada</span>
+                            <span class="category-score">4.9</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar" style="width: 98%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-category">
+                        <div class="category-info">
+                            <span class="category-name">Precisión</span>
+                            <span class="category-score">5.0</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-category">
+                        <div class="category-info">
+                            <span class="category-name">Ubicación</span>
+                            <span class="category-score">5.0</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar" style="width: 100%;"></div>
+                        </div>
+                    </div>
+                    <div class="rating-category">
+                        <div class="category-info">
+                            <span class="category-name">Relación calidad-precio</span>
+                            <span class="category-score">4.8</span>
+                        </div>
+                        <div class="rating-bar">
+                            <div class="bar" style="width: 96%;"></div>
+                        </div>
+                    </div>
                 </div>
-                <!-- Add more user reviews -->
+            </div>
+            
+            <div class="user-reviews">
+                <div class="user-review-card">
+                    <div class="review-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=40&h=40&fit=crop&crop=face" alt="María">
+                            <div class="user-details">
+                                <h4>María</h4>
+                                <span class="review-date">Enero de 2025</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">¡El lugar es increíble! Tal como se muestra en las fotos. La comunicación con Juan fue excelente y siempre estuvo disponible para resolver cualquier duda. La vista al mar es espectacular y el espacio está perfectamente equipado. Definitivamente volvería.</p>
+                </div>
+                
+                <div class="user-review-card">
+                    <div class="review-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" alt="Carlos">
+                            <div class="user-details">
+                                <h4>Carlos</h4>
+                                <span class="review-date">Diciembre de 2024</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">Excelente ubicación y muy limpio. El check-in fue súper fácil y el lugar tiene todo lo que necesitas. La piscina es un plus increíble. Juan es un anfitrión muy atento.</p>
+                </div>
+                
+                <div class="user-review-card">
+                    <div class="review-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=face" alt="Ana">
+                            <div class="user-details">
+                                <h4>Ana</h4>
+                                <span class="review-date">Noviembre de 2024</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">Perfecto para trabajar remotamente. El internet es súper rápido y el espacio de trabajo es muy cómodo. La vista es relajante y ayuda mucho a la concentración.</p>
+                </div>
+                
+                <div class="user-review-card">
+                    <div class="review-header">
+                        <div class="user-info">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="Roberto">
+                            <div class="user-details">
+                                <h4>Roberto</h4>
+                                <span class="review-date">Octubre de 2024</span>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="review-text">Una experiencia increíble. El loft es moderno, limpio y tiene todas las comodidades. La ubicación es perfecta para explorar Acapulco. Muy recomendado.</p>
+                </div>
+            </div>
+            
+            <button class="show-all-reviews-btn">Mostrar las 124 reseñas</button>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Location Section -->
+        <section class="location-section">
+            <h2>Dónde te vas a quedar</h2>
+            <div class="location-map">
+                <div class="map-placeholder">
+                    <img src="https://images.unsplash.com/photo-1524661135-423995f22d0b?w=800&h=400&fit=crop" alt="Mapa de ubicación" style="width: 100%; height: 400px; object-fit: cover; border-radius: 12px;">
+                    <div class="map-overlay">
+                        <div class="location-pin">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-details">
+                    <h3>Acapulco de Juárez, Guerrero, México</h3>
+                    <p>Ubicado en el corazón de la Zona Dorada de Acapulco, este loft ofrece acceso inmediato a las mejores playas, restaurantes y vida nocturna de la ciudad. A solo 5 minutos caminando de la playa Condesa y cerca de todos los servicios.</p>
+                    <button class="show-more-location-btn">Mostrar más</button>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Host Section -->
+        <section class="host-section">
+            <div class="host-profile">
+                <div class="host-avatar-large">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face" alt="Juan Pérez">
+                </div>
+                <div class="host-info">
+                    <h2>Conoce a tu anfitrión, Juan</h2>
+                    <div class="host-stats">
+                        <div class="host-stat">
+                            <i class="fas fa-star"></i>
+                            <span>124 reseñas</span>
+                        </div>
+                        <div class="host-stat">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Identidad verificada</span>
+                        </div>
+                        <div class="host-stat">
+                            <i class="fas fa-medal"></i>
+                            <span>Superanfitrión</span>
+                        </div>
+                    </div>
+                    <div class="host-details">
+                        <p><strong>Tiempo de respuesta:</strong> en menos de una hora</p>
+                        <p><strong>Índice de respuesta:</strong> 100%</p>
+                    </div>
+                    <p class="host-description">¡Hola! Soy Juan, arquitecto y amante de los espacios bien diseñados. Me encanta recibir huéspedes y asegurarme de que tengan la mejor experiencia posible en Acapulco.</p>
+                    <button class="contact-host-btn">Contactar anfitrión</button>
+                </div>
+            </div>
+            
+            <div class="host-protection">
+                <div class="protection-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="protection-text">
+                    <p><strong>Para proteger tus pagos, nunca transfieras dinero ni te comuniques fuera de la página web o la aplicación de BE INN.</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <hr class="section-divider">
+
+        <!-- Things to Know Section -->
+        <section class="things-to-know-section">
+            <h2>Qué debes saber</h2>
+            <div class="things-to-know-grid">
+                <div class="know-category">
+                    <h3>Normas de la casa</h3>
+                    <ul>
+                        <li>Llegada: 15:00 - 22:00</li>
+                        <li>Salida: 11:00</li>
+                        <li>Máximo 4 huéspedes</li>
+                        <li>No se permiten fiestas ni eventos</li>
+                        <li>No fumar</li>
+                    </ul>
+                    <button class="show-more-rules-btn">Mostrar más</button>
+                </div>
+                
+                <div class="know-category">
+                    <h3>Salud y seguridad</h3>
+                    <ul>
+                        <li>Se aplican las pautas de distanciamiento social y otras relacionadas con el COVID-19</li>
+                        <li>Detector de humo</li>
+                        <li>Detector de monóxido de carbono</li>
+                    </ul>
+                    <button class="show-more-safety-btn">Mostrar más</button>
+                </div>
+                
+                <div class="know-category">
+                    <h3>Política de cancelación</h3>
+                    <ul>
+                        <li>Cancelación gratuita antes del 18 feb.</li>
+                        <li>Revisa la política de cancelación completa que se aplica incluso si cancelas por motivos relacionados con el COVID-19.</li>
+                    </ul>
+                    <button class="show-more-cancellation-btn">Mostrar más</button>
+                </div>
             </div>
         </section>
 
     </main>
 
-    <!-- Footer (Reused) -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
-            <!-- ... footer content from index.html ... -->
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h4>Asistencia</h4>
+                    <ul>
+                        <li><a href="#">Centro de ayuda</a></li>
+                        <li><a href="#">AirCover</a></li>
+                        <li><a href="#">Lucha contra la discriminación</a></li>
+                        <li><a href="#">Apoyo a la discapacidad</a></li>
+                        <li><a href="#">Opciones de cancelación</a></li>
+                        <li><a href="#">Denuncia problemas del barrio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Recibir huéspedes</h4>
+                    <ul>
+                        <li><a href="#">Pon tu espacio en BE INN</a></li>
+                        <li><a href="#">AirCover para anfitriones</a></li>
+                        <li><a href="#">Recursos para anfitriones</a></li>
+                        <li><a href="#">Foro de la comunidad</a></li>
+                        <li><a href="#">Ser anfitrión responsable</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>BE INN</h4>
+                    <ul>
+                        <li><a href="#">Sala de prensa</a></li>
+                        <li><a href="#">Nuevas funciones</a></li>
+                        <li><a href="#">Empleo</a></li>
+                        <li><a href="#">Inversores</a></li>
+                        <li><a href="#">Tarjetas de regalo</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-left">
+                    <span>© 2025 BE INN, Inc.</span>
+                    <a href="#">Privacidad</a>
+                    <a href="#">Términos</a>
+                    <a href="#">Mapa del sitio</a>
+                    <a href="#">Detalles de la empresa</a>
+                </div>
+                <div class="footer-bottom-right">
+                    <div class="language-currency">
+                        <button class="language-btn">
+                            <i class="fas fa-globe"></i>
+                            <span>Español (MX)</span>
+                        </button>
+                        <button class="currency-btn">
+                            <span>$ MXN</span>
+                        </button>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
