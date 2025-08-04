@@ -272,14 +272,14 @@ function initializeSaveModal() {
             if (checkedLists.length > 0) {
                 const lists = Array.from(checkedLists).map(input => input.value).join(', ');
                 showNotification(`¡Guardado en: ${lists}!`, 'success');
-                
+
                 // Update heart icon to filled
                 const heartIcon = document.querySelector('.save-btn i');
                 if (heartIcon) {
                     heartIcon.className = 'fas fa-heart';
                     heartIcon.style.color = '#FF385C';
                 }
-                
+
                 closeModal(saveModal);
             } else {
                 showNotification('Selecciona al menos una lista', 'warning');
@@ -380,7 +380,7 @@ function initializeLoginModal() {
 // Photo Tour Functionality
 function openPhotoTour() {
     const photoTourModal = document.getElementById('photo-tour-modal');
-    
+
     if (!photoTourModal) return;
 
     // Prevent body scroll
@@ -398,7 +398,7 @@ function openPhotoTour() {
 
 function closePhotoTourModal() {
     const photoTourModal = document.getElementById('photo-tour-modal');
-    
+
     if (!photoTourModal) return;
 
     photoTourModal.classList.remove('active');
@@ -416,7 +416,7 @@ function closePhotoTourModal() {
 // Helper function to close modals
 function closeModal(modal) {
     if (!modal) return;
-    
+
     modal.classList.remove('active');
     setTimeout(() => {
         modal.style.display = 'none';
@@ -430,13 +430,13 @@ function closeModal(modal) {
 // Helper function to open modals
 function openModal(modal) {
     if (!modal) return;
-    
+
     // Prevent body scroll
     const scrollY = window.scrollY;
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = '100%';
-    
+
     modal.style.display = 'flex';
     setTimeout(() => {
         modal.classList.add('active');
@@ -574,7 +574,7 @@ function showNotification(message, type = 'info', duration = 4000) {
 
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
-    
+
     // Icon based on type
     let icon = '';
     switch (type) {
@@ -592,18 +592,18 @@ function showNotification(message, type = 'info', duration = 4000) {
             icon = '<i class="fas fa-info-circle"></i>';
             break;
     }
-    
+
     notification.innerHTML = `
         ${icon}
         <span>${message}</span>
     `;
-    
+
     // Mobile-first styles
     const isMobile = window.innerWidth < 768;
-    const backgroundColor = type === 'success' ? '#4CAF50' : 
-                          type === 'warning' ? '#FF9800' : 
-                          type === 'error' ? '#f44336' : '#2196F3';
-    
+    const backgroundColor = type === 'success' ? '#4CAF50' :
+        type === 'warning' ? '#FF9800' :
+            type === 'error' ? '#f44336' : '#2196F3';
+
     notification.style.cssText = `
         position: fixed;
         ${isMobile ? 'bottom: 20px; left: 16px; right: 16px;' : 'top: 100px; right: 20px; max-width: 350px;'}
