@@ -1,4 +1,4 @@
-const spacesData = [
+window.spacesData = window.spacesData || [
     {
         id: 1,
         title: "Departamento en Acapulco de Juárez",

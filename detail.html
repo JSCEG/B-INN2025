@@ -43,11 +43,11 @@
     <main class="detail-main-content">
         <!-- Detail Header -->
         <section class="detail-header">
-            <h1>Increíble Loft con Vista al Mar</h1>
+            <h1></h1>
             <div class="detail-subtitle">
-                <span class="rating"><i class="fas fa-star"></i> 4.98</span>
-                <span class="reviews">(124 reseñas)</span>
-                <span class="location">Acapulco de Juárez, Guerrero, México</span>
+                <span class="rating"><i class="fas fa-star"></i> <span></span></span>
+                <span class="reviews"></span>
+                <span class="location"></span>
                 <div class="detail-actions">
                     <button class="action-btn share-btn">
                         <i class="fas fa-share-alt"></i>
@@ -59,6 +59,7 @@
                     </button>
                 </div>
             </div>
+            <div class="stats"></div>
         </section>
 
         <!-- Share Modal -->
@@ -118,52 +119,13 @@
             </div>
         </div>
 
-        <!-- Save Modal -->
-        <div id="saveModal" class="modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2>Guardar en tu lista de deseos</h2>
-                    <span class="close-save-modal">&times;</span>
-                </div>
-                <div class="save-options">
-                    <div class="save-list-item">
-                        <input type="checkbox" id="list-favoritos" name="save-list" value="Mis Favoritos">
-                        <label for="list-favoritos">Mis Favoritos</label>
-                    </div>
-                    <div class="save-list-item">
-                        <input type="checkbox" id="list-viajes" name="save-list" value="Viajes Futuros">
-                        <label for="list-viajes">Viajes Futuros</label>
-                    </div>
-                    <div class="save-list-item create-new-list">
-                        <i class="fas fa-plus-circle"></i>
-                        <span>Crear nueva lista</span>
-                    </div>
-                    <div class="new-list-input" style="display: none;">
-                        <input type="text" placeholder="Nombre de la nueva lista">
-                        <button class="btn-primary create-list-btn">Crear</button>
-                    </div>
-                </div>
-                <button class="btn-primary save-to-list-btn">Guardar</button>
-            </div>
-        </div>
-
         <!-- Photo Gallery -->
-        <section class="photo-gallery">
+        <section class="photo-gallery property-gallery">
             <div class="gallery-grid">
                 <div class="main-image">
-                    <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&h=600&fit=crop"
-                        alt="Vista principal del espacio">
+                    <img src="" alt="Vista principal del espacio">
                 </div>
-                <div class="secondary-images">
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 1">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 2">
-                    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 3">
-                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=400&h=300&fit=crop"
-                        alt="Imagen secundaria 4">
-                </div>
+                <div class="secondary-images thumbnail-images"></div>
             </div>
             <div class="view-all-photos-overlay">
                 <i class="fas fa-camera"></i>
@@ -176,8 +138,12 @@
             <!-- Left Column: Space Info -->
             <div class="detail-info-column">
                 <div class="space-host-info">
-                    <h2>Oficina completa. Anfitrión: Juan Pérez</h2>
-                    <p>4 personas · 1 oficina privada · 2 escritorios · 1 baño</p>
+                    <div class="host-profile">
+                        <img src="" alt="Foto del anfitrión" class="host-avatar">
+                        <div class="host-info">
+                            <p></p>
+                        </div>
+                    </div>
                 </div>
                 <hr>
                 <div class="space-highlights">
@@ -197,14 +163,14 @@
                     </div>
                 </div>
                 <hr>
-                <div class="space-description">
+                <div class="space-description description">
                     <h3>Descripción</h3>
                     <p>Disfruta de una experiencia de lujo en este alojamiento céntrico. Este loft ha sido diseñado
                         pensando en la productividad y el confort, con una vista inspiradora al mar que te ayudará a
                         concentrarte y relajarte...</p>
                 </div>
                 <hr>
-                <div class="space-amenities">
+                <div class="space-amenities amenities">
                     <h3>¿Qué ofrece este lugar?</h3>
                     <ul>
                         <li><i class="fas fa-wifi"></i> Wifi de alta velocidad</li>
@@ -219,23 +185,22 @@
             <!-- Right Column: Booking Card -->
             <div class="booking-card-column">
                 <div class="booking-card">
-                    <div class="booking-price">
-                        <b>$2,910 MXN</b> <span>noche</span>
-                    </div>
+                    <div class="price"><span></span> noche</div>
+                    <div class="rating"><i class="fas fa-star"></i><span></span></div>
                     <div class="booking-form">
                         <div class="date-inputs">
                             <div class="date-field">
-                                <label for="checkin">LLEGADA</label>
-                                <input type="text" id="checkin" value="12/09/2025">
+                                <label for="check-in">LLEGADA</label>
+                                <input type="date" id="check-in">
                             </div>
                             <div class="date-field">
-                                <label for="checkout">SALIDA</label>
-                                <input type="text" id="checkout" value="14/09/2025">
+                                <label for="check-out">SALIDA</label>
+                                <input type="date" id="check-out">
                             </div>
                         </div>
                         <div class="guest-input">
-                            <label for="guests">PERSONAS</label>
-                            <input type="text" id="guests" value="2 personas">
+                            <label for="num-guests">PERSONAS</label>
+                            <input type="number" id="num-guests" min="1" value="1">
                         </div>
                         <button class="btn-primary">Reservar</button>
                     </div>
@@ -261,39 +226,9 @@
         <hr class="section-divider">
 
         <!-- Reviews Section -->
-        <section class="reviews-section">
-            <h2><i class="fas fa-star"></i> 4.98 (124 reseñas)</h2>
-            <div class="reviews-grid">
-                <div class="review-card">
-                    <h3>Limpieza</h3>
-                    <div class="rating-bar">
-                        <div class="bar" style="width: 98%;"></div>
-                    </div>
-                    <span>4.9</span>
-                </div>
-                <div class="review-card">
-                    <h3>Comunicación</h3>
-                    <div class="rating-bar">
-                        <div class="bar" style="width: 100%;"></div>
-                    </div>
-                    <span>5.0</span>
-                </div>
-                <!-- Add more rating categories -->
-            </div>
-            <div class="user-reviews">
-                <div class="user-review-card">
-                    <div class="user-info">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Foto de usuario">
-                        <div>
-                            <h4>Maria</h4>
-                            <span>Agosto de 2025</span>
-                        </div>
-                    </div>
-                    <p>¡El lugar es increíble! Tal como se muestra en las fotos. La comunicación con Juan fue excelente.
-                        Definitivamente volvería.</p>
-                </div>
-                <!-- Add more user reviews -->
-            </div>
+        <section class="reviews-section reviews">
+            <h2></h2>
+            <div class="review-list"></div>
         </section>
 
     </main>
