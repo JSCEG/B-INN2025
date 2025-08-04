@@ -265,7 +265,7 @@ function createEnhancedSpaceCard(space, index) {
             
             <!-- Special Labels -->
             ${isGuestFavorite ? '<div class="space-label guest-favorite">Favorito entre huéspedes</div>' : ''}
-            ${isSuperhost ? '<div class="space-label superhost">Superanfitrión</div>' : ''}
+            ${isSuperhost ? '<div class="space-label superhost">Super Outer</div>' : ''}
             ${hasInstantBook ? '<div class="instant-book">Reserva instantánea</div>' : ''}
             ${isVerifiedHost ? '<div class="verified-host"><i class="fas fa-check-circle"></i> Verificado</div>' : ''}
             

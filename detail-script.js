@@ -52,7 +52,7 @@ function populateSpaceData(space) {
     if (hostAvatar) hostAvatar.src = space.host_avatar;
 
     const hostInfo = document.querySelector('.host-info p');
-    if (hostInfo) hostInfo.textContent = `Anfitrión: ${space.host}`;
+    if (hostInfo) hostInfo.textContent = `Outer: ${space.host}`;
 
     const description = document.querySelector('.description p');
     if (description) description.textContent = space.description;

@@ -23,7 +23,7 @@ const spacesData = [
             "https://images.unsplash.com/photo-1505691935518-a777b0270f09?w=150&h=100&fit=crop"
         ],
         reviews: [
-            { user: "Ana G.", date: "Julio 2025", text: "¡Una estancia maravillosa! La propiedad es hermosa y el anfitrión muy amable." },
+            { user: "Ana G.", date: "Julio 2025", text: "¡Una estancia maravillosa! La propiedad es hermosa y el Outer muy amable." },
             { user: "Carlos R.", date: "Junio 2025", text: "Excelente ubicación y muy limpio. ¡Definitivamente volvería!" }
         ]
     },
