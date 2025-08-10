@@ -75,7 +75,7 @@
 
             <!-- Epic CTA Buttons -->
             <div class="hero-cta">
-                <button class="cta-primary epic-btn" onclick="startVoiceDemo()">
+                <button class="cta-primary epic-btn" id="startVoiceDemoBtn">
                     <div class="btn-bg"></div>
                     <div class="btn-content">
                         <div class="btn-icon">
@@ -91,7 +91,7 @@
                     </div>
                 </button>
 
-                <button class="cta-secondary epic-btn-secondary" onclick="scrollToSpaces()">
+                <button class="cta-secondary epic-btn-secondary" id="scrollToSpacesBtn">
                     <div class="btn-border"></div>
                     <div class="btn-content">
                         <i class="fas fa-rocket"></i>
@@ -277,9 +277,9 @@
             </div>
 
             <div class="categories-grid">
-                <div class="category-card" data-category="oficinas">
+                <div class="category-card" data-category="oficinas" role="button" tabindex="0">
                     <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&h=300&fit=crop"
                             alt="Oficinas">
                         <div class="category-overlay">
                             <div class="category-icon">
@@ -297,9 +297,9 @@
                     </div>
                 </div>
 
-                <div class="category-card" data-category="estacionamientos">
+                <div class="category-card" data-category="estacionamientos" role="button" tabindex="0">
                     <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=400&h=300&fit=crop"
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1506521781263-d8422e82f27a?w=400&h=300&fit=crop"
                             alt="Estacionamientos">
                         <div class="category-overlay">
                             <div class="category-icon">
@@ -317,9 +317,9 @@
                     </div>
                 </div>
 
-                <div class="category-card" data-category="eventos">
+                <div class="category-card" data-category="eventos" role="button" tabindex="0">
                     <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&h=300&fit=crop"
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1511578314322-379afb476865?w=400&h=300&fit=crop"
                             alt="Eventos">
                         <div class="category-overlay">
                             <div class="category-icon">
@@ -337,9 +337,9 @@
                     </div>
                 </div>
 
-                <div class="category-card" data-category="especiales">
+                <div class="category-card" data-category="especiales" role="button" tabindex="0">
                     <div class="category-image">
-                        <img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop"
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop"
                             alt="Espacios Especiales">
                         <div class="category-overlay">
                             <div class="category-icon">
@@ -367,7 +367,7 @@
                 <div class="search-header">
                     <h2>Encuentra tu Espacio Perfecto</h2>
                     <div class="voice-search-toggle">
-                        <button class="voice-btn" onclick="toggleVoiceSearch()">
+                        <button class="voice-btn" id="toggleVoiceSearchBtn">
                             <i class="fas fa-microphone"></i>
                             <span>Búsqueda por Voz</span>
                         </button>
@@ -376,19 +376,19 @@
 
                 <div class="advanced-search-bar">
                     <div class="search-field location-field">
-                        <label>Lugar</label>
+                        <label for="locationInput">Lugar</label>
                         <input type="text" placeholder="Ciudad, municipio, colonia" id="locationInput">
                         <i class="fas fa-map-marker-alt"></i>
                     </div>
 
                     <div class="search-field date-field">
-                        <label>Fecha</label>
+                        <label for="dateInput">Fecha</label>
                         <input type="date" id="dateInput">
                         <i class="fas fa-calendar"></i>
                     </div>
 
                     <div class="search-field time-field">
-                        <label>Tiempo requerido</label>
+                        <label for="timeInput">Tiempo requerido</label>
                         <select id="timeInput">
                             <option value="">Seleccionar</option>
                             <option value="1-3">1-3 horas</option>
@@ -399,7 +399,7 @@
                         <i class="fas fa-clock"></i>
                     </div>
 
-                    <button class="search-btn-advanced" onclick="performSearch()">
+                    <button class="search-btn-advanced" id="performSearchBtn">
                         <i class="fas fa-search"></i>
                         <span>Buscar</span>
                     </button>
@@ -444,7 +444,7 @@
                     <div class="assistant-message">
                         <p><strong>Platica con un asistente personal IA</strong></p>
                         <p>Déjalo todo en sus manos</p>
-                        <button class="start-chat-btn" onclick="startVoiceDemo()">
+                        <button class="start-chat-btn" id="startVoiceChatBtn">
                             <i class="fas fa-comments"></i>
                             Iniciar Chat de Voz
                         </button>
@@ -465,7 +465,7 @@
             <div class="stories-grid">
                 <div class="story-card featured">
                     <div class="story-image">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop"
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop"
                             alt="María González">
                         <div class="story-badge">
                             <i class="fas fa-star"></i>
@@ -498,7 +498,7 @@
 
                 <div class="story-card">
                     <div class="story-image">
-                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop"
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop"
                             alt="Carlos Mendoza">
                         <div class="story-badge parking">
                             <i class="fas fa-parking"></i>
@@ -531,7 +531,7 @@
 
                 <div class="story-card">
                     <div class="story-image">
-                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop"
+                        <img loading="lazy" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=300&h=300&fit=crop"
                             alt="Ana Rodríguez">
                         <div class="story-badge events">
                             <i class="fas fa-glass-cheers"></i>
@@ -589,7 +589,7 @@
                             </select>
                         </div>
 
-                        <button class="calculate-btn" onclick="calculateEarnings()">
+                        <button class="calculate-btn" id="calculateEarningsBtn">
                             <i class="fas fa-calculator"></i>
                             <span>Calcular mis ingresos</span>
                         </button>
@@ -624,7 +624,7 @@
                             <span>Pagos garantizados</span>
                         </div>
                     </div>
-                    <button class="become-outer-btn" onclick="window.location.href='home.html?becomeOuter=true'">
+                    <button class="become-outer-btn" id="becomeOuterBtn">
                         <i class="fas fa-rocket"></i>
                         <span>Convertirme en Outer</span>
                     </button>
@@ -642,7 +642,7 @@
                     <p>Únete a miles de usuarios que ya disfrutan de la experiencia B-INN</p>
                 </div>
                 <div class="cta-buttons">
-                    <button class="epic-btn cta-primary-final" onclick="window.location.href='home.html'">
+                    <button class="epic-btn cta-primary-final" id="ctaHomeBtn">
                         <div class="btn-bg"></div>
                         <div class="btn-content">
                             <i class="fas fa-rocket"></i>
@@ -650,7 +650,7 @@
                             <div class="btn-shine"></div>
                         </div>
                     </button>
-                    <button class="epic-btn-secondary cta-secondary-final" onclick="showLoginModal()">
+                    <button class="epic-btn-secondary cta-secondary-final" id="ctaLoginBtn">
                         <div class="btn-border"></div>
                         <div class="btn-content">
                             <i class="fas fa-sign-in-alt"></i>
@@ -718,7 +718,7 @@
         <div class="voice-modal-content">
             <div class="voice-header">
                 <h3>Asistente de Voz B-INN</h3>
-                <button class="close-voice" onclick="closeVoiceDemo()">&times;</button>
+                <button class="close-voice" id="closeVoiceDemoBtn">&times;</button>
             </div>
 
             <div class="voice-interface">
@@ -735,7 +735,7 @@
                     <p id="voiceStatus">Presiona el botón y habla...</p>
                 </div>
 
-                <button class="voice-record-btn" id="recordBtn" onclick="toggleRecording()">
+                <button class="voice-record-btn" id="recordBtn">
                     <i class="fas fa-microphone"></i>
                     <span>Mantén presionado para hablar</span>
                 </button>
@@ -743,13 +743,13 @@
                 <div class="voice-suggestions">
                     <p>Prueba decir:</p>
                     <div class="suggestion-chips">
-                        <span class="chip" onclick="simulateVoiceInput(this.textContent)">
+                        <span class="chip" id="suggestionChip1">
                             "Necesito una oficina para mañana"
                         </span>
-                        <span class="chip" onclick="simulateVoiceInput(this.textContent)">
+                        <span class="chip" id="suggestionChip2">
                             "Busco estacionamiento en el centro"
                         </span>
-                        <span class="chip" onclick="simulateVoiceInput(this.textContent)">
+                        <span class="chip" id="suggestionChip3">
                             "Quiero un lugar para evento"
                         </span>
                     </div>
@@ -763,15 +763,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Inicia sesión o regístrate</h2>
-                <span class="close" onclick="closeLoginModal()">&times;</span>
+                <span class="close" id="closeLoginModalBtn">&times;</span>
             </div>
 
             <div class="social-login">
-                <button class="social-btn google-btn" onclick="signInWithGoogle()">
+                <button class="social-btn google-btn" id="googleSignInBtn">
                     <i class="fab fa-google"></i>
                     Continuar con Google
                 </button>
-                <button class="social-btn facebook-btn" onclick="signInWithFacebook()">
+                <button class="social-btn facebook-btn" id="facebookSignInBtn">
                     <i class="fab fa-facebook-f"></i>
                     Continuar con Facebook
                 </button>
@@ -781,13 +781,13 @@
                 <span>o</span>
             </div>
 
-            <form class="login-form" onsubmit="handleLoginSubmit(event)">
+            <form class="login-form" id="loginForm">
                 <input type="email" placeholder="Correo electrónico" required>
                 <input type="password" placeholder="Contraseña" required>
                 <button type="submit" class="btn-primary">Iniciar sesión</button>
             </form>
 
-            <p class="signup-link">¿No tienes cuenta? <a href="#" onclick="showSignup()">Regístrate</a></p>
+            <p class="signup-link">¿No tienes cuenta? <a href="#" id="showSignupLink">Regístrate</a></p>
         </div>
     </div>
 

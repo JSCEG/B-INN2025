@@ -162,6 +162,46 @@ function initializeAnimations() {
 
 // Setup event listeners
 function setupEventListeners() {
+    // --- Refactored Event Listeners ---
+
+    // Hero Section
+    document.getElementById('startVoiceDemoBtn')?.addEventListener('click', startVoiceDemo);
+    document.getElementById('scrollToSpacesBtn')?.addEventListener('click', scrollToSpaces);
+
+    // Search Section
+    document.getElementById('toggleVoiceSearchBtn')?.addEventListener('click', toggleVoiceSearch);
+    document.getElementById('performSearchBtn')?.addEventListener('click', performSearch);
+    document.getElementById('startVoiceChatBtn')?.addEventListener('click', startVoiceDemo);
+
+    // Success Stories Section
+    document.getElementById('calculateEarningsBtn')?.addEventListener('click', calculateEarnings);
+    document.getElementById('becomeOuterBtn')?.addEventListener('click', () => {
+        window.location.href = 'home.html?becomeOuter=true';
+    });
+
+    // CTA Section
+    document.getElementById('ctaHomeBtn')?.addEventListener('click', () => {
+        window.location.href = 'home.html';
+    });
+    document.getElementById('ctaLoginBtn')?.addEventListener('click', showLoginModal);
+
+    // Voice Modal
+    document.getElementById('closeVoiceDemoBtn')?.addEventListener('click', closeVoiceDemo);
+    document.getElementById('recordBtn')?.addEventListener('click', toggleRecording);
+    document.getElementById('suggestionChip1')?.addEventListener('click', (e) => simulateVoiceInput(e.target.textContent));
+    document.getElementById('suggestionChip2')?.addEventListener('click', (e) => simulateVoiceInput(e.target.textContent));
+    document.getElementById('suggestionChip3')?.addEventListener('click', (e) => simulateVoiceInput(e.target.textContent));
+
+    // Login Modal
+    document.getElementById('closeLoginModalBtn')?.addEventListener('click', closeLoginModal);
+    document.getElementById('loginForm')?.addEventListener('submit', handleLoginSubmit);
+    document.getElementById('showSignupLink')?.addEventListener('click', showSignup);
+    document.getElementById('googleSignInBtn')?.addEventListener('click', signInWithGoogle);
+    document.getElementById('facebookSignInBtn')?.addEventListener('click', signInWithFacebook);
+
+
+    // --- Original Event Listeners ---
+
     // Category cards click
     document.querySelectorAll('.category-card').forEach(card => {
         card.addEventListener('click', () => {
